@@ -10,11 +10,13 @@ import UIKit
 
 class CovidDetailViewController: UIViewController {
     
+    var covidOverview: CovidOverview?
+    
     let titleCase: [String] = ["신규 확진자", "확진자", "완치자", "사망자", "발생률", "해외유입 신규 확진자", "지역발생 신규 확진자"]
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .systemPink
+//        tableView.backgroundColor = .systemPink
         return tableView
     }()
     
@@ -27,6 +29,7 @@ class CovidDetailViewController: UIViewController {
         addViews()
         setConstraints()
         setConfigureTableView()
+        configureView()
     }
     
     func addViews() {
@@ -50,6 +53,12 @@ class CovidDetailViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
+    
+    func configureView() {
+        guard let covidOverview = self.covidOverview else { return }
+        self.title = covidOverview.countryName
+//        self.newCaseCell.
+    }
 
 }
 
@@ -72,13 +81,12 @@ extension CovidDetailViewController:
             withIdentifier: "CovidCell") as? CovidCell else { return UITableViewCell() }
         
         let target = titleCase[indexPath.row]
-        print(target)
+//        print(target)
         cell.textLabel?.text = target
-//        cell.textLabel?.text = target[0]
-
         
-        
-        
+        cell.detailTextLabel?.textColor = .black
+        cell.detailTextLabel?.text = "data"
+//        print(covidOverview)
     
         return cell
     }

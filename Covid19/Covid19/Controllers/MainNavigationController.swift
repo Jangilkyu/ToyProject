@@ -10,7 +10,7 @@ import UIKit
 
 class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
-//        viewControllers = [MainViewController()]
-        viewControllers = [CovidDetailViewController()]
+        viewControllers = [MainViewController()]
+//        viewControllers = [CovidDetailViewController()]
     }
 }
