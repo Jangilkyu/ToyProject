@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Quote {
-    let contents: String
+struct Quote: Codable {
+    let content: String
     let name: String
 }

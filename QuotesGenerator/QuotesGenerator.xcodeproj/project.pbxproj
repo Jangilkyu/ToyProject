@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD5545FE52935B61CDAC9451 /* Pods_QuotesGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C386C0228DA924DE046F2A01 /* Pods_QuotesGenerator.framework */; };
 		D7CA1DF927AAB23900E4E960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA1DF827AAB23900E4E960 /* AppDelegate.swift */; };
 		D7CA1DFB27AAB23900E4E960 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA1DFA27AAB23900E4E960 /* SceneDelegate.swift */; };
 		D7CA1E0027AAB23900E4E960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CA1DFE27AAB23900E4E960 /* Main.storyboard */; };
@@ -15,9 +16,13 @@
 		D7CA1E1027AAB44900E4E960 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA1E0F27AAB44900E4E960 /* MainViewController.swift */; };
 		D7CA1E1327AABCBF00E4E960 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA1E1227AABCBF00E4E960 /* ColorTheme.swift */; };
 		D7CA1E1527AACCA800E4E960 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA1E1427AACCA800E4E960 /* Quote.swift */; };
+		D7CBBE2D27AC054E009EAFDF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7CBBE2C27AC054E009EAFDF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26D76E4A28E5B1D8D17AF5D1 /* Pods-QuotesGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesGenerator.debug.xcconfig"; path = "Target Support Files/Pods-QuotesGenerator/Pods-QuotesGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		B22BC685B0749407B4A13A1F /* Pods-QuotesGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesGenerator.release.xcconfig"; path = "Target Support Files/Pods-QuotesGenerator/Pods-QuotesGenerator.release.xcconfig"; sourceTree = "<group>"; };
+		C386C0228DA924DE046F2A01 /* Pods_QuotesGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuotesGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7CA1DF527AAB23900E4E960 /* QuotesGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuotesGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7CA1DF827AAB23900E4E960 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7CA1DFA27AAB23900E4E960 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,7 @@
 		D7CA1E0F27AAB44900E4E960 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D7CA1E1227AABCBF00E4E960 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		D7CA1E1427AACCA800E4E960 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		D7CBBE2C27AC054E009EAFDF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +41,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5545FE52935B61CDAC9451 /* Pods_QuotesGenerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27DEF6BD58E3FC2415688B0D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26D76E4A28E5B1D8D17AF5D1 /* Pods-QuotesGenerator.debug.xcconfig */,
+				B22BC685B0749407B4A13A1F /* Pods-QuotesGenerator.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6CEC1EB8FDCF0D8F0EB6C28C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C386C0228DA924DE046F2A01 /* Pods_QuotesGenerator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D7CA1DEC27AAB23900E4E960 = {
 			isa = PBXGroup;
 			children = (
 				D7CA1DF727AAB23900E4E960 /* QuotesGenerator */,
 				D7CA1DF627AAB23900E4E960 /* Products */,
+				27DEF6BD58E3FC2415688B0D /* Pods */,
+				6CEC1EB8FDCF0D8F0EB6C28C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +97,7 @@
 				D7CA1E0127AAB23A00E4E960 /* Assets.xcassets */,
 				D7CA1E0327AAB23A00E4E960 /* LaunchScreen.storyboard */,
 				D7CA1E0627AAB23A00E4E960 /* Info.plist */,
+				D7CBBE2C27AC054E009EAFDF /* GoogleService-Info.plist */,
 			);
 			path = QuotesGenerator;
 			sourceTree = "<group>";
@@ -112,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7CA1E0927AAB23A00E4E960 /* Build configuration list for PBXNativeTarget "QuotesGenerator" */;
 			buildPhases = (
+				EAA475E7AAEBB5438AD126A8 /* [CP] Check Pods Manifest.lock */,
 				D7CA1DF127AAB23900E4E960 /* Sources */,
 				D7CA1DF227AAB23900E4E960 /* Frameworks */,
 				D7CA1DF327AAB23900E4E960 /* Resources */,
+				6B54EA4B4A357E6ACF080C0E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,12 +194,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7CA1E0527AAB23A00E4E960 /* LaunchScreen.storyboard in Resources */,
+				D7CBBE2D27AC054E009EAFDF /* GoogleService-Info.plist in Resources */,
 				D7CA1E0227AAB23A00E4E960 /* Assets.xcassets in Resources */,
 				D7CA1E0027AAB23900E4E960 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B54EA4B4A357E6ACF080C0E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuotesGenerator/Pods-QuotesGenerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuotesGenerator/Pods-QuotesGenerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuotesGenerator/Pods-QuotesGenerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAA475E7AAEBB5438AD126A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QuotesGenerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7CA1DF127AAB23900E4E960 /* Sources */ = {
@@ -324,6 +397,7 @@
 		};
 		D7CA1E0A27AAB23A00E4E960 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26D76E4A28E5B1D8D17AF5D1 /* Pods-QuotesGenerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -351,6 +425,7 @@
 		};
 		D7CA1E0B27AAB23A00E4E960 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B22BC685B0749407B4A13A1F /* Pods-QuotesGenerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class MainViewController: UIViewController {
+    
+    var ref: DatabaseReference! // Firebase Realtime Database
+    var quotesList: [Quote] = []
 
     let quotesTitleLabel: UILabel = {
       let quotesTitleLabel = UILabel()
@@ -27,18 +31,15 @@ class MainViewController: UIViewController {
     let quotesLabel: UILabel = {
         let quotesLabel = UILabel()
         quotesLabel.sizeToFit()
-
-        quotesLabel.text = "Label"
         quotesLabel.numberOfLines = 0
 
-        quotesLabel.backgroundColor = .gray
         return quotesLabel
     }()
     
     let quotesWriterLabel: UILabel = {
         let quotesWriterLabel = UILabel()
-        quotesWriterLabel.text = "a"
         quotesWriterLabel.backgroundColor = .systemRed
+        quotesWriterLabel.textAlignment = .right
         return quotesWriterLabel
     }()
     
@@ -46,7 +47,7 @@ class MainViewController: UIViewController {
         let quotesButton = UIButton()
         quotesButton.setTitle("명언 생성", for: .normal)
         quotesButton.backgroundColor = .black
-        
+        quotesButton.addTarget(self, action: #selector(tapQuoteGeneratorButton(_:)), for: .touchUpInside)
         return quotesButton
     }()
     
@@ -55,6 +56,25 @@ class MainViewController: UIViewController {
         
         addViews()
         setConstraints()
+        
+        ref = Database.database().reference()
+        
+        ref.observe(.value) { snapshot in
+            guard let value = snapshot.value as? [String: [String: Any]] else { return }
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: value) else { return }
+            guard let decoded = try? JSONDecoder().decode([String: Quote].self, from: jsonData) else { return }
+            
+            self.quotesList = Array(decoded.values)
+            print(self.quotesList[0])
+        }
+    }
+    
+    @objc func tapQuoteGeneratorButton(_ sender: Any) {
+        let random = Int(arc4random_uniform(2))
+        let quote = quotesList[random]
+        self.quotesLabel.text = quote.content
+        self.quotesWriterLabel.text = quote.name
+        
     }
     
     func addViews() {
@@ -108,7 +128,7 @@ class MainViewController: UIViewController {
     func quotesButtonConstraints() {
         quotesButton.translatesAutoresizingMaskIntoConstraints = false
         quotesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        quotesButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        quotesButton.topAnchor.constraint(equalTo: quotesImageView.bottomAnchor, constant: 20).isActive = true
     }
     
 }
