@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 
 final class LoginViewController: UIViewController {
+    
+    private var centerYConstraints: NSLayoutConstraint?
+    
     private let container: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fill
@@ -70,6 +73,10 @@ final class LoginViewController: UIViewController {
         return imageView
     }()
     
+    @objc func viewDidTap(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     private let emailLoginButton: UIButton = {
         let emailLoginButton = UIButton()
         emailLoginButton.setTitle("이메일/비밀번호로 계속하기", for: .normal)
@@ -112,6 +119,59 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .white
         setup()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+    
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+              let duration = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? Double
+              else { return }
+        
+        let keyboardHeight = keyboardFrame.height
+        
+        UIView.animate(withDuration: duration) {
+            self.centerYConstraints?.constant = -(keyboardHeight - 100.0)
+            self.view.layoutIfNeeded()
+        }
+
+        print(duration)
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let duration = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? Double
+              else { return }
+    
+        UIView.animate(withDuration: duration) {
+            self.centerYConstraints?.constant = 0
+            self.view.layoutIfNeeded()
+        }
+
+        print(duration)
     }
     
     func setup() {
@@ -166,7 +226,9 @@ final class LoginViewController: UIViewController {
         container.translatesAutoresizingMaskIntoConstraints = false
         container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
         container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
-        container.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        let constraint =  container.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        constraint.isActive = true
+        self.centerYConstraints = constraint
         container.setCustomSpacing(20, after: titleImageView)
         container.setCustomSpacing(40, after: titleLabel)
         container.setCustomSpacing(30, after: passwordTextField)

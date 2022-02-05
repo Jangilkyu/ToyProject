@@ -86,10 +86,10 @@
 		D77D611A27AD47C6008B89B7 /* LoginApp */ = {
 			isa = PBXGroup;
 			children = (
+				D77D613C27ADC847008B89B7 /* View */,
 				D77D612F27AD4876008B89B7 /* Controllers */,
 				D77D611B27AD47C6008B89B7 /* AppDelegate.swift */,
 				D77D611D27AD47C6008B89B7 /* SceneDelegate.swift */,
-				D77D613227ADB29C008B89B7 /* InsetTextFiled.swift */,
 				D77D613627ADBB45008B89B7 /* GoogleService-Info.plist */,
 				D77D612427AD47C7008B89B7 /* Assets.xcassets */,
 				D77D612627AD47C7008B89B7 /* LaunchScreen.storyboard */,
@@ -106,6 +106,14 @@
 				D77D613A27ADC588008B89B7 /* LoginNavigationController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D77D613C27ADC847008B89B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D77D613227ADB29C008B89B7 /* InsetTextFiled.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
