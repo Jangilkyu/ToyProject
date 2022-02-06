@@ -7,5 +7,6 @@ target 'LoginApp' do
 
   # Pods for LoginApp
   pod 'Firebase/Auth'
+  pod 'GoogleSignIn' , '~> 5.0'
 
 end

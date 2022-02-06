@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class ShowResultViewController: UIViewController {
     
@@ -61,5 +62,8 @@ class ShowResultViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        
+        // Google Sign In
+        GIDSignIn.sharedInstance().presentingViewController = self
     }
 }

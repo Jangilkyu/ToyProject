@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import GoogleSignIn
 
 final class LoginViewController: UIViewController {
     
@@ -98,10 +99,14 @@ final class LoginViewController: UIViewController {
         googleLoginButton.backgroundColor = .black
         googleLoginButton.layer.cornerRadius = 20
         googleLoginButton.clipsToBounds = true
+        googleLoginButton.addTarget(self, action: #selector(googleLoginButtonTapped), for: .touchUpInside)
         
         return googleLoginButton
     }()
     
+    @objc func googleLoginButtonTapped() {
+        GIDSignIn.sharedInstance().signIn()
+    }
     
     private let appleLoginButton: UIButton = {
         let appleLoginButton = UIButton()
@@ -122,6 +127,10 @@ final class LoginViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
         self.view.addGestureRecognizer(tapGesture)
+        
+        // Google Sign In
+        GIDSignIn.sharedInstance().presentingViewController = self
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
