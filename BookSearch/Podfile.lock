@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.5.0)
   - Reusable (4.1.2):
     - Reusable/Storyboard (= 4.1.2)
     - Reusable/View (= 4.1.2)
@@ -6,15 +7,18 @@ PODS:
   - Reusable/View (4.1.2)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.5)
   - Reusable
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Reusable
 
 SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
 
-PODFILE CHECKSUM: a1c2147064cbee4fbec3eb9486b3e6a812c1a39a
+PODFILE CHECKSUM: a6e600187fd1302a6769f966f9733fb7ba2f4ed8
 
 COCOAPODS: 1.11.2

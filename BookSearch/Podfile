@@ -7,5 +7,5 @@ target 'BookSearch' do
 
   # Pods for BookSearch
   pod 'Reusable'
-
+  pod 'Alamofire', '~> 5.5'
 end
