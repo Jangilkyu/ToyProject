@@ -12,16 +12,12 @@ import Alamofire
 
 class BookTableViewController: UIViewController {
     
+    var items: [BookSearchResult.BookInfo] = []
+    
     let bookTableView: UITableView = {
       let bookTableView = UITableView()
       
         return bookTableView
-    }()
-    
-    let uiSearchController: UISearchController = {
-      let uiSearchController = UISearchController()
-        uiSearchController.searchResultsUpdater = nil
-        return uiSearchController
     }()
     
     override func viewDidLoad() {
@@ -29,8 +25,10 @@ class BookTableViewController: UIViewController {
         setup()
         setConstraints()
         setConfigureTableView()
-        self.navigationItem.title = "📚원하는 책을 찾아보세요!🤗"
-        self.navigationItem.searchController = uiSearchController
+        setSearchBar()
+//        self.navigationItem.title = "📚원하는 책을 찾아보세요!🤗"
+        fetchBooks()
+        
     }
     
     func setup() {
@@ -42,6 +40,18 @@ class BookTableViewController: UIViewController {
         bookTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bookTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         bookTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    func setSearchBar() {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "📖찾고자 하는 책을 검색해보세요.!🔎"
+        // left search ICon Img SET
+//        searchBar.setImage(UIImage(named: "search"), for: UISearchBar.Icon.search, state: .normal)
+        // right cancelButton Img SET
+//        searchBar.setImage(UIImage(named: "cancel"), for: .clear, state: .normal)
+        
+        self.navigationController?.navigationBar.topItem?.titleView = searchBar
+
     }
     
     func setConfigureTableView() {
@@ -75,4 +85,30 @@ extension BookTableViewController: UITableViewDataSource {
 extension BookTableViewController: UITableViewDelegate {
     
 }
+
+
+
+extension BookTableViewController {
+    
+    func fetchBooks() {
+        AF.request(
+            "https://openapi.naver.com/v1/search/book.json?query=swift",
+            headers: [
+                       "X-Naver-Client-Id": Storage().clientID,
+                       "X-Naver-Client-Secret" : Storage().clientSecret
+            ]).validate().responseDecodable(of: BookSearchResult.self) {
+                (response) in
+                switch response.result {
+                    case .success(let obj):
+                        print(obj)
+                    case .failure(let e):
+                        print(e.localizedDescription)
+                }
+                
+                guard let booksearchResult = response.value else { return }
+                print(booksearchResult.items[0].title)
+            }
+    }
+}
+
 
