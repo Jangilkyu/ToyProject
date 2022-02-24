@@ -16,8 +16,8 @@
 		D79FC1C427C50CA7007C13E3 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC1C327C50CA7007C13E3 /* MainNavigationController.swift */; };
 		D79FC1C627C50CDF007C13E3 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC1C527C50CDF007C13E3 /* BookTableViewController.swift */; };
 		D79FC1C927C51A78007C13E3 /* BookTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC1C827C51A78007C13E3 /* BookTableCell.swift */; };
-		D79FC1CC27C51DDC007C13E3 /* AlamofireProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC1CB27C51DDC007C13E3 /* AlamofireProcessor.swift */; };
 		D79FC1CF27C51E3E007C13E3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC1CE27C51E3E007C13E3 /* Storage.swift */; };
+		D79FC1D227C52460007C13E3 /* BookSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC1D127C52460007C13E3 /* BookSearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +33,8 @@
 		D79FC1C327C50CA7007C13E3 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		D79FC1C527C50CDF007C13E3 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		D79FC1C827C51A78007C13E3 /* BookTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableCell.swift; sourceTree = "<group>"; };
-		D79FC1CB27C51DDC007C13E3 /* AlamofireProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcessor.swift; sourceTree = "<group>"; };
 		D79FC1CE27C51E3E007C13E3 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		D79FC1D127C52460007C13E3 /* BookSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResult.swift; sourceTree = "<group>"; };
 		F1ED50DED462EB5948E85445 /* Pods-BookSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearch.release.xcconfig"; path = "Target Support Files/Pods-BookSearch/Pods-BookSearch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,8 +88,8 @@
 		D79FC1AB27C50ACE007C13E3 /* BookSearch */ = {
 			isa = PBXGroup;
 			children = (
+				D79FC1D027C523CE007C13E3 /* Model */,
 				D79FC1CD27C51E30007C13E3 /* Util */,
-				D79FC1CA27C51DCE007C13E3 /* Processor */,
 				D79FC1C727C51A6B007C13E3 /* View */,
 				D79FC1C027C50C91007C13E3 /* Controllers */,
 				D79FC1AC27C50ACE007C13E3 /* AppDelegate.swift */,
@@ -119,20 +119,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D79FC1CA27C51DCE007C13E3 /* Processor */ = {
-			isa = PBXGroup;
-			children = (
-				D79FC1CB27C51DDC007C13E3 /* AlamofireProcessor.swift */,
-			);
-			path = Processor;
-			sourceTree = "<group>";
-		};
 		D79FC1CD27C51E30007C13E3 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				D79FC1CE27C51E3E007C13E3 /* Storage.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		D79FC1D027C523CE007C13E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D79FC1D127C52460007C13E3 /* BookSearchResult.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,10 +251,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79FC1C627C50CDF007C13E3 /* BookTableViewController.swift in Sources */,
+				D79FC1D227C52460007C13E3 /* BookSearchResult.swift in Sources */,
 				D79FC1CF27C51E3E007C13E3 /* Storage.swift in Sources */,
 				D79FC1C927C51A78007C13E3 /* BookTableCell.swift in Sources */,
 				D79FC1AD27C50ACE007C13E3 /* AppDelegate.swift in Sources */,
-				D79FC1CC27C51DDC007C13E3 /* AlamofireProcessor.swift in Sources */,
 				D79FC1C427C50CA7007C13E3 /* MainNavigationController.swift in Sources */,
 				D79FC1AF27C50ACE007C13E3 /* SceneDelegate.swift in Sources */,
 			);

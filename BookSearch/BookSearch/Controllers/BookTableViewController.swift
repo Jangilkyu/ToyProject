@@ -127,7 +127,7 @@ extension BookTableViewController {
     
     func fetchBooks(for name: String) {
         let url = "https://openapi.naver.com/v1/search/book.json?"
-        let parameters: [String: Any] = ["query": name]
+        let parameters: [String: Any] = ["query": name, "display" : 100]
         AF.request(
             url, parameters: parameters,
             headers: [

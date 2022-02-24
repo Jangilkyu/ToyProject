@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Sotrage {
+struct Storage {
     let clientID  = "NGQtAbyFI5IpmRlY0GWc"
     let clientSecret = "DRaSZ7_emH"
 }

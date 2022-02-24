@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+
+struct BookSearchResult: Codable {
+    struct BookInfo: Codable {
+        let title: String
+        let author: String
+        let discount: String
+        let pubdate: String
+    }
+    
+    let items: [BookInfo]
+}
+
+
