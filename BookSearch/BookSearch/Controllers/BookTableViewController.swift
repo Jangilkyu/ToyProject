@@ -12,7 +12,7 @@ import Alamofire
 
 class BookTableViewController: UIViewController {
     
-    var items: [BookSearchResult.BookInfo] = []
+    var items1: [BookSearchResult.BookInfo] = []
     
     let bookTableView: UITableView = {
       let bookTableView = UITableView()
@@ -27,7 +27,6 @@ class BookTableViewController: UIViewController {
         setConfigureTableView()
         setSearchBar()
 //        self.navigationItem.title = "📚원하는 책을 찾아보세요!🤗"
-        fetchBooks()
         
     }
     
@@ -51,13 +50,13 @@ class BookTableViewController: UIViewController {
 //        searchBar.setImage(UIImage(named: "cancel"), for: .clear, state: .normal)
         
         self.navigationController?.navigationBar.topItem?.titleView = searchBar
-
+        searchBar.delegate = self
     }
     
     func setConfigureTableView() {
         bookTableView.register(cellType: BookTableCell.self)
-        bookTableView.delegate = self
         bookTableView.dataSource = self
+        bookTableView.delegate = self
     }
 }
 
@@ -67,7 +66,8 @@ extension BookTableViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 2
+        print(items1.count)
+        return self.items1.count
     }
     
     func tableView(
@@ -75,38 +75,81 @@ extension BookTableViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as BookTableCell
+        cell.textLabel?.text =  items1[indexPath.row].title
+        
+        cell.detailTextLabel?.text = "Aa"
+        print(items1[indexPath.row].discount)
+       _ = items1.map { bookInfo in
+//           print(bookInfo[indexPath.row].title)
+        }
         
         return cell
     }
     
-    
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        return 80
+    }
 }
 
 extension BookTableViewController: UITableViewDelegate {
-    
+
 }
 
-
+extension BookTableViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(
+        _ searchBar: UISearchBar
+    ) {
+        searchBar.text = ""
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(
+        _ searchBar: UISearchBar
+    ) {
+        print("검색 버튼 이벤트")
+        
+        guard let searchResult = searchBar.text else { return }
+        fetchBooks(for: searchResult)
+    }
+    
+    func searchBar(
+        _ searchBar: UISearchBar,
+        textDidChange searchText: String
+    ) {
+        print("search = \(searchText)")
+    }
+}
 
 extension BookTableViewController {
     
-    func fetchBooks() {
+    func fetchBooks(for name: String) {
+        let url = "https://openapi.naver.com/v1/search/book.json?"
+        let parameters: [String: Any] = ["query": name]
         AF.request(
-            "https://openapi.naver.com/v1/search/book.json?query=swift",
+            url, parameters: parameters,
             headers: [
                        "X-Naver-Client-Id": Storage().clientID,
                        "X-Naver-Client-Secret" : Storage().clientSecret
-            ]).validate().responseDecodable(of: BookSearchResult.self) {
+            ])
+            .validate()
+            .responseDecodable(of: BookSearchResult.self) {
                 (response) in
                 switch response.result {
                     case .success(let obj):
-                        print(obj)
+//                    print(obj.items)
+                    self.items1 = obj.items
+                    
+                    DispatchQueue.main.async {
+                        self.bookTableView.reloadData()
+                    }
+
                     case .failure(let e):
                         print(e.localizedDescription)
                 }
                 
-                guard let booksearchResult = response.value else { return }
-                print(booksearchResult.items[0].title)
             }
     }
 }
